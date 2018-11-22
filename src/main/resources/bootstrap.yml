@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: configuration_service
+  profiles:
+    active: composite
+  cloud:
+    config:
+      server:
+        composite:
+        - type: git
+          search-locations: https://github.com/iliatankelevich/edu-spring-config-service.git
+#          username: username
+#          password: password
+        bootstrap: true
+        git:
+          uri: https://github.com/iliatankelevich/edu-spring-config-service.git
+#          username: username
+#          password: password
+          force-pull: true
+      uri: http://localhost:8888
+server:
+  port: 8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
